@@ -108,8 +108,9 @@ const uploadResume = async (req, res) => {
             // Continue without NLP - this is not a fatal error
         }
         
-        // For serverless, we don't store the file path (there's no persistent disk)
-        const filePath = isServerless ? null : file.path;
+        // For serverless (memory storage), we don't store the file path (there's no persistent disk)
+        // If file.path exists (disk storage), use it; otherwise null
+        const filePath = file.path ? file.path : null;
         const filename = isServerless ? `resume-${Date.now()}` : file.filename;
         
         console.log('Saving resume to database...');
