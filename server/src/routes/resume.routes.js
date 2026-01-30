@@ -14,7 +14,7 @@ const {
     deleteResume,
     getAnalysis,
     getAnalysisHistory
-} = require('../controllers/resumeController');
+} = require('../controllers/resumeUploadController');
 
 // All routes require authentication
 router.use(authenticate);
