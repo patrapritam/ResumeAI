@@ -75,32 +75,44 @@ app.use((req, res) => {
 });
 
 // MongoDB connection
-const MONGODB_URI =
-  process.env.MONGODB_URI || "mongodb://localhost:27017/resume-analyzer";
+const connectDB = require("./config/db");
 
-mongoose
-  .connect(MONGODB_URI)
-  .then(() => {
-    console.log("✅ Connected to MongoDB");
+// Database middleware - ensures DB is connected for every request
+app.use(async (req, res, next) => {
+  // Skip DB connection for simple health checks and static files if needed
+  if (req.path === '/api/health' || req.path === '/') {
+    return next();
+  }
+  
+  try {
+    await connectDB();
+    next();
+  } catch (error) {
+    console.error("Database connection error:", error);
+    res.status(500).json({ 
+      error: true, 
+      message: "Database connection failed",
+      details: process.env.NODE_ENV === 'development' ? error.message : undefined
+    });
+  }
+});
 
-    // Start server
-    app.listen(PORT, () => {
-      console.log(`🚀 Server running on http://localhost:${PORT}`);
-      console.log(
-        `📊 NLP Service URL: ${
-          process.env.NLP_SERVICE_URL || "http://localhost:8000"
-        }`
-      );
+// Start server (only for local development)
+if (require.main === module) {
+  connectDB()
+    .then(() => {
+      app.listen(PORT, () => {
+        console.log(`🚀 Server running on http://localhost:${PORT}`);
+        console.log(
+          `📊 NLP Service URL: ${
+            process.env.NLP_SERVICE_URL || "http://localhost:8000"
+          }`
+        );
+      });
+    })
+    .catch((err) => {
+      console.error("❌ MongoDB connection error:", err);
     });
-  })
-  .catch((err) => {
-    console.error("❌ MongoDB connection error:", err);
-    // Start server anyway for development without DB
-    app.listen(PORT, () => {
-      console.log(
-        `⚠️ Server running without MongoDB on http://localhost:${PORT}`
-      );
-    });
-  });
+}
 
 module.exports = app;
