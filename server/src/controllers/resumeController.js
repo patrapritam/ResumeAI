@@ -20,6 +20,7 @@ const NLP_SERVICE_URL = process.env.NLP_SERVICE_URL || 'http://localhost:8000';
  */
 const uploadResume = async (req, res) => {
     try {
+        console.log('UPLOAD CONTROLLER V2.0.0 - FORCED REFRESH');
         console.log('Upload request received, isServerless:', isServerless);
         console.log('NLP_SERVICE_URL:', NLP_SERVICE_URL);
         
