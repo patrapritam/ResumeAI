@@ -109,8 +109,8 @@ const uploadResume = async (req, res) => {
         }
         
         // For serverless (memory storage), we don't store the file path (there's no persistent disk)
-        // If file.path exists (disk storage), use it; otherwise null
-        const filePath = file.path ? file.path : null;
+        // If file.path exists (disk storage), use it; otherwise use a placeholder string to satisfy schema validation
+        const filePath = file.path ? file.path : "memory_storage";
         const filename = isServerless ? `resume-${Date.now()}` : file.filename;
         
         console.log('Saving resume to database...');
