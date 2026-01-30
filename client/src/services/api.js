@@ -48,7 +48,8 @@ export const authAPI = {
 // Resume API
 export const resumeAPI = {
   upload: (formData) => api.post('/resume/upload', formData, {
-    headers: { 'Content-Type': 'multipart/form-data' }
+    headers: { 'Content-Type': 'multipart/form-data' },
+    timeout: 60000 // 60 seconds for upload + NLP processing
   }),
   analyze: (data) => api.post('/resume/analyze', data),
   getAll: () => api.get('/resume'),
