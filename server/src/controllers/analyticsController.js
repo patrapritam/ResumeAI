@@ -4,7 +4,7 @@
  */
 
 const Analysis = require('../models/Analysis');
-const Resume = require('../models/Resume');
+const Resume = require('../models/ResumeV2');
 const User = require('../models/User');
 const Job = require('../models/Job');
 
