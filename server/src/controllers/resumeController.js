@@ -20,7 +20,11 @@ const NLP_SERVICE_URL = process.env.NLP_SERVICE_URL || 'http://localhost:8000';
  */
 const uploadResume = async (req, res) => {
     try {
+        console.log('Upload request received, isServerless:', isServerless);
+        console.log('NLP_SERVICE_URL:', NLP_SERVICE_URL);
+        
         if (!req.file) {
+            console.log('No file in request');
             return res.status(400).json({
                 error: true,
                 message: 'No file uploaded.'
@@ -28,61 +32,87 @@ const uploadResume = async (req, res) => {
         }
         
         const file = req.file;
+        console.log('File received:', {
+            originalname: file.originalname,
+            mimetype: file.mimetype,
+            size: file.size,
+            hasBuffer: !!file.buffer,
+            hasPath: !!file.path
+        });
+        
         const fileExt = path.extname(file.originalname).toLowerCase().replace('.', '');
         
-        // Create FormData to send to NLP service
-        const formData = new FormData();
-        
-        // Handle both memory storage (serverless) and disk storage (local)
-        if (file.buffer) {
-            // Memory storage (Vercel serverless)
-            formData.append('file', file.buffer, {
-                filename: file.originalname,
-                contentType: file.mimetype
-            });
-        } else if (file.path) {
-            // Disk storage (local development)
-            formData.append('file', fs.createReadStream(file.path), {
-                filename: file.originalname,
-                contentType: file.mimetype
-            });
-        }
-        
-        // Extract text using NLP service
+        // Extract text using NLP service (optional - won't fail the upload)
         let extractedText = '';
         let skills = { technical: [], soft: [], experience: [], education: [] };
+        let nlpSuccess = false;
         
         try {
+            // Create FormData to send to NLP service
+            const formData = new FormData();
+            
+            // Handle both memory storage (serverless) and disk storage (local)
+            if (file.buffer) {
+                // Memory storage (Vercel serverless)
+                console.log('Using memory storage - buffer size:', file.buffer.length);
+                formData.append('file', file.buffer, {
+                    filename: file.originalname,
+                    contentType: file.mimetype
+                });
+            } else if (file.path) {
+                // Disk storage (local development)
+                console.log('Using disk storage - path:', file.path);
+                formData.append('file', fs.createReadStream(file.path), {
+                    filename: file.originalname,
+                    contentType: file.mimetype
+                });
+            }
+            
+            console.log('Sending file to NLP service...');
             const extractResponse = await axios.post(
                 `${NLP_SERVICE_URL}/extract-text`,
                 formData,
                 { 
                     headers: formData.getHeaders(),
-                    timeout: 30000 // 30 second timeout
+                    timeout: 45000, // 45 second timeout
+                    maxContentLength: Infinity,
+                    maxBodyLength: Infinity
                 }
             );
-            extractedText = extractResponse.data.text;
+            console.log('NLP extract-text response received');
+            extractedText = extractResponse.data.text || '';
             
-            // Extract skills
-            const skillsResponse = await axios.post(
-                `${NLP_SERVICE_URL}/extract-skills`,
-                { text: extractedText },
-                { timeout: 30000 }
-            );
-            skills = {
-                technical: skillsResponse.data.technical_skills,
-                soft: skillsResponse.data.soft_skills,
-                experience: skillsResponse.data.experience_keywords,
-                education: skillsResponse.data.education
-            };
+            if (extractedText) {
+                // Extract skills only if we got text
+                console.log('Extracting skills...');
+                const skillsResponse = await axios.post(
+                    `${NLP_SERVICE_URL}/extract-skills`,
+                    { text: extractedText },
+                    { timeout: 30000 }
+                );
+                skills = {
+                    technical: skillsResponse.data.technical_skills || [],
+                    soft: skillsResponse.data.soft_skills || [],
+                    experience: skillsResponse.data.experience_keywords || [],
+                    education: skillsResponse.data.education || []
+                };
+                nlpSuccess = true;
+                console.log('Skills extracted successfully');
+            }
         } catch (nlpError) {
             console.error('NLP service error:', nlpError.message);
-            // Continue without extracted text if NLP service is down
+            if (nlpError.response) {
+                console.error('NLP response status:', nlpError.response.status);
+                console.error('NLP response data:', nlpError.response.data);
+            }
+            // Continue without NLP - this is not a fatal error
         }
         
         // For serverless, we don't store the file path (there's no persistent disk)
         const filePath = isServerless ? null : file.path;
         const filename = isServerless ? `resume-${Date.now()}` : file.filename;
+        
+        console.log('Saving resume to database...');
         
         // Save resume to database
         const resume = new Resume({
@@ -97,13 +127,14 @@ const uploadResume = async (req, res) => {
         });
         
         await resume.save();
+        console.log('Resume saved with ID:', resume._id);
         
         // Update user's resume count
         await User.findByIdAndUpdate(req.userId, { $inc: { resumeCount: 1 } });
         
         res.status(201).json({
             success: true,
-            message: 'Resume uploaded successfully',
+            message: nlpSuccess ? 'Resume uploaded and analyzed successfully' : 'Resume uploaded successfully (analysis pending)',
             data: {
                 resume: {
                     id: resume._id,
@@ -117,10 +148,11 @@ const uploadResume = async (req, res) => {
             }
         });
     } catch (error) {
-        console.error('Upload resume error:', error);
+        console.error('Upload resume error:', error.message);
+        console.error('Error stack:', error.stack);
         res.status(500).json({
             error: true,
-            message: 'Failed to upload resume.'
+            message: error.message || 'Failed to upload resume.'
         });
     }
 };
