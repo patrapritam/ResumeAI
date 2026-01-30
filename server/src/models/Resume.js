@@ -31,7 +31,8 @@ const resumeSchema = new mongoose.Schema({
     },
     filePath: {
         type: String,
-        required: true
+        required: false,  // Optional for serverless deployments
+        default: null
     },
     extractedText: {
         type: String,
