@@ -1,0 +1,233 @@
+.admin-page {
+  min-height: calc(100vh - 140px);
+}
+
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--space-2xl);
+}
+
+.admin-header h1 {
+  font-size: 2rem;
+  margin-bottom: var(--space-xs);
+}
+
+.admin-header p {
+  color: var(--gray-400);
+}
+
+.period-selector select {
+  min-width: 150px;
+  cursor: pointer;
+}
+
+/* Stats Grid */
+.stats-grid {
+  margin-bottom: var(--space-2xl);
+}
+
+.stat-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: var(--space-lg);
+  position: relative;
+  overflow: hidden;
+}
+
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--gradient-primary);
+}
+
+.stat-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background: rgba(99, 102, 241, 0.2);
+  border-radius: var(--radius-lg);
+  color: var(--primary-400);
+  margin-bottom: var(--space-md);
+}
+
+.stat-card .stat-value {
+  font-size: 2.25rem;
+  font-weight: 800;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.stat-card .stat-label {
+  color: var(--gray-400);
+  font-size: 0.875rem;
+  margin-top: var(--space-xs);
+}
+
+/* Charts Grid */
+.charts-grid {
+  margin-bottom: var(--space-xl);
+}
+
+.chart-card {
+  padding: var(--space-xl);
+  margin-bottom: var(--space-xl);
+}
+
+.chart-card h3 {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-size: 1.25rem;
+  margin-bottom: var(--space-lg);
+}
+
+.chart-container {
+  width: 100%;
+  min-height: 300px;
+}
+
+.no-data {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 300px;
+  color: var(--gray-500);
+  font-size: 0.875rem;
+}
+
+/* Custom Tooltip */
+.custom-tooltip {
+  background: rgba(15, 15, 30, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-md);
+  padding: var(--space-sm) var(--space-md);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.tooltip-label {
+  font-weight: 600;
+  color: white;
+  margin-bottom: var(--space-xs);
+  font-size: 0.875rem;
+}
+
+.custom-tooltip p {
+  font-size: 0.75rem;
+  margin: 2px 0;
+}
+
+/* Skills Table */
+.skills-table-card {
+  padding: var(--space-xl);
+}
+
+.skills-table-card h3 {
+  font-size: 1.25rem;
+  margin-bottom: var(--space-lg);
+}
+
+.skills-table {
+  overflow-x: auto;
+}
+
+.skills-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.skills-table th,
+.skills-table td {
+  padding: var(--space-md);
+  text-align: left;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.skills-table th {
+  color: var(--gray-400);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+}
+
+.skills-table td {
+  font-size: 0.875rem;
+}
+
+.skills-table tr:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.priority-badge {
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.priority-badge.high {
+  background: rgba(239, 68, 68, 0.2);
+  color: var(--accent-red);
+}
+
+.priority-badge.medium {
+  background: rgba(249, 115, 22, 0.2);
+  color: var(--accent-orange);
+}
+
+.priority-badge.low {
+  background: rgba(16, 185, 129, 0.2);
+  color: var(--accent-green);
+}
+
+/* Recharts overrides */
+.recharts-cartesian-axis-tick-value {
+  fill: rgba(255, 255, 255, 0.5);
+}
+
+.recharts-legend-item-text {
+  color: rgba(255, 255, 255, 0.7) !important;
+}
+
+@media (max-width: 1024px) {
+  .charts-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .admin-header {
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+  
+  .period-selector {
+    width: 100%;
+  }
+  
+  .period-selector select {
+    width: 100%;
+  }
+  
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,211 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(26, 26, 46, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.header .header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 70px;
+}
+
+.header .logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  text-decoration: none;
+}
+
+.header .logo-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: var(--gradient-primary);
+  border-radius: var(--radius-lg);
+  color: white;
+}
+
+.header .logo-text {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: white;
+}
+
+.header .nav-desktop {
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+}
+
+.header .nav-link {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  color: var(--gray-300);
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: none;
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-fast);
+}
+
+.header .nav-link:hover {
+  color: white;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.header .user-menu {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.header .user-button {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  color: var(--gray-300);
+  background: none;
+  border: none;
+  font-size: 0.875rem;
+  cursor: pointer;
+}
+
+.header .mobile-menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: var(--space-sm);
+}
+
+.header .nav-mobile {
+  display: none;
+  flex-direction: column;
+  gap: var(--space-sm);
+  padding: var(--space-md) 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Dropdown */
+.header .dropdown {
+  position: relative;
+}
+
+.header .dropdown-trigger {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: none;
+  color: var(--gray-300);
+  font-size: 0.875rem;
+  font-weight: 500;
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.header .dropdown-trigger:hover {
+  color: white;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.header .dropdown-trigger svg.rotate {
+  transform: rotate(180deg);
+}
+
+.header .dropdown-trigger svg {
+  transition: transform 0.2s;
+}
+
+.header .dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 8px;
+  min-width: 180px;
+  background: rgba(26, 26, 46, 0.95);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-lg);
+  padding: 8px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  animation: dropdownFade 0.2s ease;
+}
+
+@keyframes dropdownFade {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.header .dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  color: var(--gray-300);
+  text-decoration: none;
+  border-radius: var(--radius-md);
+  font-size: 0.875rem;
+  transition: all var(--transition-fast);
+}
+
+.header .dropdown-item:hover {
+  color: white;
+  background: rgba(139, 92, 246, 0.2);
+}
+
+.header .dropdown-item svg {
+  color: var(--accent-purple);
+}
+
+.header .theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  color: var(--text-secondary);
+  transition: all var(--transition-fast);
+}
+
+.header .theme-toggle:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: var(--text-primary);
+}
+
+@media (max-width: 768px) {
+  .header .nav-desktop {
+    display: none;
+  }
+  
+  .header .mobile-menu-btn {
+    display: block;
+  }
+  
+  .header .nav-mobile {
+    display: flex;
+  }
+}

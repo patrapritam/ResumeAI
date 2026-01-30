@@ -1,0 +1,247 @@
+.job-library-page .page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 32px;
+}
+
+.job-library-page .page-header h1 {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.job-library-page .page-header p {
+  color: var(--text-secondary);
+}
+
+.job-library-page .search-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 20px;
+  margin-bottom: 32px;
+}
+
+.job-library-page .search-bar input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: var(--text-primary);
+  font-size: 1rem;
+  outline: none;
+}
+
+.job-library-page .search-bar input::placeholder {
+  color: var(--text-secondary);
+}
+
+.job-library-page .search-bar svg {
+  color: var(--text-secondary);
+}
+
+.jobs-section {
+  margin-bottom: 40px;
+}
+
+.jobs-section h2 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.25rem;
+  margin-bottom: 20px;
+  color: var(--text-primary);
+}
+
+.jobs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 20px;
+}
+
+.job-card {
+  padding: 24px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.job-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.job-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.job-card h3 {
+  font-size: 1.1rem;
+  color: var(--text-primary);
+}
+
+.template-badge {
+  font-size: 0.7rem;
+  padding: 4px 8px;
+  background: rgba(139, 92, 246, 0.2);
+  color: var(--accent-purple);
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+.job-company {
+  color: var(--accent-blue);
+  font-size: 0.9rem;
+  margin-bottom: 12px;
+}
+
+.job-description {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  line-height: 1.5;
+  margin-bottom: 16px;
+}
+
+.job-meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  margin-bottom: 16px;
+}
+
+.job-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.job-actions .btn-primary {
+  flex: 1;
+}
+
+.btn-danger {
+  color: var(--accent-red) !important;
+}
+
+.btn-danger:hover {
+  background: rgba(239, 68, 68, 0.1);
+}
+
+/* Modal */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 24px;
+}
+
+.modal {
+  width: 100%;
+  max-width: 600px;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 24px;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.modal-header h2 {
+  font-size: 1.25rem;
+}
+
+.modal .form-group {
+  margin-bottom: 20px;
+}
+
+.modal .form-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.modal .form-group input,
+.modal .form-group textarea {
+  width: 100%;
+  padding: 12px 16px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  transition: border-color 0.2s;
+}
+
+.modal .form-group input:focus,
+.modal .form-group textarea:focus {
+  outline: none;
+  border-color: var(--accent-purple);
+}
+
+.modal .form-group textarea {
+  resize: vertical;
+  min-height: 150px;
+}
+
+.checkbox-group label {
+  display: flex !important;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.checkbox-group input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  margin-top: 24px;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 60px 40px;
+}
+
+.empty-state svg {
+  color: var(--text-secondary);
+  margin-bottom: 16px;
+}
+
+.empty-state h3 {
+  margin-bottom: 8px;
+}
+
+.empty-state p {
+  color: var(--text-secondary);
+  margin-bottom: 24px;
+}
+
+@media (max-width: 768px) {
+  .job-library-page .page-header {
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .jobs-grid {
+    grid-template-columns: 1fr;
+  }
+}

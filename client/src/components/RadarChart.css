@@ -1,0 +1,26 @@
+.radar-chart-container {
+  padding: 16px;
+}
+
+.radar-chart-container h4 {
+  margin-bottom: 16px;
+  color: var(--text-primary);
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.radar-chart-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  color: var(--text-secondary);
+}
+
+.recharts-legend-item-text {
+  color: var(--text-secondary) !important;
+}
+
+.recharts-polar-angle-axis-tick-value {
+  fill: var(--text-secondary);
+}
