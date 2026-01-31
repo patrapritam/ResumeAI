@@ -1,0 +1,117 @@
+.info-page {
+  padding-top: var(--space-2xl);
+  padding-bottom: var(--space-3xl);
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.875rem;
+  margin-bottom: var(--space-xl);
+  transition: color var(--transition-fast);
+}
+
+.back-link:hover {
+  color: var(--primary-400);
+}
+
+.info-header {
+  text-align: center;
+  margin-bottom: var(--space-3xl);
+}
+
+.info-icon-wrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 72px;
+  height: 72px;
+  background: var(--gradient-primary);
+  border-radius: var(--radius-xl);
+  color: white;
+  margin-bottom: var(--space-lg);
+}
+
+.info-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: var(--space-sm);
+  color: var(--text-heading);
+}
+
+.info-header p {
+  font-size: 1.125rem;
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-lg);
+  margin-bottom: var(--space-3xl);
+}
+
+.info-card {
+  padding: var(--space-xl);
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.info-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+.info-card-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background: rgba(99, 102, 241, 0.15);
+  border-radius: var(--radius-lg);
+  color: var(--primary-400);
+  margin-bottom: var(--space-md);
+}
+
+.info-card h3 {
+  font-size: 1.125rem;
+  margin-bottom: var(--space-sm);
+  color: var(--text-heading);
+}
+
+.info-card p {
+  color: var(--text-secondary);
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+
+.info-cta {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+  .info-header h1 {
+    font-size: 1.75rem;
+  }
+  
+  .info-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .info-cta {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .info-cta .btn {
+    width: 100%;
+    max-width: 300px;
+  }
+}

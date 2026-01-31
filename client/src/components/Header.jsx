@@ -55,7 +55,10 @@ function Header() {
             <div className="logo-icon">
               <FileText size={24} />
             </div>
-            <span className="logo-text">ResumeAI</span>
+            <div className="logo-content">
+              <span className="logo-text">ResumeAI</span>
+              <span className="logo-byline">by Pritam Patra</span>
+            </div>
           </Link>
 
           {/* Desktop Navigation */}

@@ -39,6 +39,21 @@
   color: var(--text-heading);
 }
 
+.header .logo-content {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.header .logo-byline {
+  font-size: 0.65rem;
+  font-weight: 500;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
 .header .nav-desktop {
   display: flex;
   align-items: center;

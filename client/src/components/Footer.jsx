@@ -1,4 +1,13 @@
-import { Github, Linkedin, Heart, Code } from "lucide-react";
+import {
+  Github,
+  Linkedin,
+  Heart,
+  Code,
+  Mail,
+  Phone,
+  MapPin,
+} from "lucide-react";
+import { Link } from "react-router-dom";
 import "./Footer.css";
 
 function Footer() {
@@ -9,25 +18,42 @@ function Footer() {
           <div className="footer-brand">
             <h3>ResumeAI</h3>
             <p>AI-powered resume analysis for the modern job seeker.</p>
+            <div className="contact-info">
+              <a
+                href="mailto:pritampatra.fb@gmail.com"
+                className="contact-link"
+              >
+                <Mail size={14} />
+                pritampatra.fb@gmail.com
+              </a>
+              <a href="tel:+917318632266" className="contact-link">
+                <Phone size={14} />
+                +91 7318632266
+              </a>
+              <span className="contact-link">
+                <MapPin size={14} />
+                India
+              </span>
+            </div>
           </div>
 
           <div className="footer-links">
             <div className="footer-section">
               <h4>Product</h4>
-              <a href="#features">Features</a>
-              <a href="#pricing">Pricing</a>
-              <a href="#faq">FAQ</a>
+              <Link to="/features">Features</Link>
+              <Link to="/pricing">Pricing</Link>
+              <Link to="/faq">FAQ</Link>
             </div>
             <div className="footer-section">
               <h4>Company</h4>
-              <a href="#about">About</a>
-              <a href="#careers">Careers</a>
-              <a href="#contact">Contact</a>
+              <Link to="/about">About</Link>
+              <Link to="/careers">Careers</Link>
+              <Link to="/contact">Contact</Link>
             </div>
             <div className="footer-section">
               <h4>Legal</h4>
-              <a href="#privacy">Privacy</a>
-              <a href="#terms">Terms</a>
+              <Link to="/privacy">Privacy Policy</Link>
+              <Link to="/terms">Terms of Service</Link>
             </div>
           </div>
         </div>
@@ -45,6 +71,7 @@ function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="GitHub"
+              className="social-link"
             >
               <Github size={20} />
             </a>
@@ -53,6 +80,7 @@ function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="LinkedIn"
+              className="social-link"
             >
               <Linkedin size={20} />
             </a>

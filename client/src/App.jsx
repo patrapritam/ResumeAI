@@ -18,6 +18,7 @@ import ResumeBuilder from "./pages/ResumeBuilder";
 import LearningPath from "./pages/LearningPath";
 import ATSCheck from "./pages/ATSCheck";
 import CoverLetter from "./pages/CoverLetter";
+import InfoPage from "./pages/InfoPage";
 import { api } from "./services/api";
 
 function App() {
@@ -111,6 +112,15 @@ function App() {
                     )
                   }
                 />
+                {/* Info Pages */}
+                <Route path="/features" element={<InfoPage />} />
+                <Route path="/pricing" element={<InfoPage />} />
+                <Route path="/faq" element={<InfoPage />} />
+                <Route path="/about" element={<InfoPage />} />
+                <Route path="/careers" element={<InfoPage />} />
+                <Route path="/contact" element={<InfoPage />} />
+                <Route path="/privacy" element={<InfoPage />} />
+                <Route path="/terms" element={<InfoPage />} />
                 <Route path="*" element={<Navigate to="/" />} />
               </Routes>
             </main>
