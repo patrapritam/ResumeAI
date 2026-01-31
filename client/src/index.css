@@ -197,12 +197,26 @@ a:hover {
 .btn-secondary {
   background: var(--glass-bg);
   backdrop-filter: blur(10px);
-  color: white;
+  color: var(--text-heading);
   border: 1px solid var(--glass-border);
 }
 
 .btn-secondary:hover {
-  background: rgba(255, 255, 255, 0.15);
+  background: var(--nav-hover-bg);
+  border-color: var(--primary-400);
+}
+
+/* Cancel/Outline button style - for better visibility in light mode */
+.btn-outline {
+  background: transparent;
+  color: var(--text-secondary);
+  border: 1px solid var(--border-color);
+}
+
+.btn-outline:hover {
+  background: var(--nav-hover-bg);
+  color: var(--text-heading);
+  border-color: var(--primary-400);
 }
 
 .btn-accent {
