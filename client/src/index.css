@@ -588,4 +588,43 @@ a:hover {
   .page {
     padding: var(--space-lg) 0;
   }
+
+  .btn {
+    padding: var(--space-xs) var(--space-md);
+    font-size: 0.8rem;
+  }
+
+  .btn-lg {
+    padding: var(--space-sm) var(--space-lg);
+    font-size: 0.875rem;
+  }
+
+  .glass-card {
+    border-radius: var(--radius-lg);
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+  h2 {
+    font-size: 1.25rem;
+  }
+  h3 {
+    font-size: 1rem;
+  }
+
+  .container {
+    padding: 0 var(--space-sm);
+  }
+
+  .page {
+    padding: var(--space-md) 0;
+  }
+
+  .btn {
+    padding: var(--space-xs) var(--space-sm);
+    font-size: 0.75rem;
+  }
 }
