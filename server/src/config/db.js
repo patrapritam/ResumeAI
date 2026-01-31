@@ -39,6 +39,9 @@ async function connectDB() {
     throw new Error('Please define the MONGODB_URI environment variable');
   }
 
+  console.log('MONGODB_URI present:', !!MONGODB_URI);
+  console.log('MONGODB_URI length:', MONGODB_URI ? MONGODB_URI.length : 0);
+  console.log('MONGODB_URI starts with:', MONGODB_URI ? MONGODB_URI.substring(0, 20) + '...' : 'N/A');
   console.log(`Creating new MongoDB connection (State: ${mongoose.connection.readyState})...`);
   
   // Create new connection promise
