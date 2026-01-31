@@ -28,7 +28,7 @@ async function connectDB() {
   // If disconnected or other state, create new connection
   const opts = {
     bufferCommands: false, // Disable buffering to fail fast
-    serverSelectionTimeoutMS: 10000, 
+    serverSelectionTimeoutMS: 25000, // 25 seconds for cold starts 
     socketTimeoutMS: 45000,
     family: 4 // Force IPv4 to avoid potential IPv6 issues
   };
