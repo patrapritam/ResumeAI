@@ -1,4 +1,4 @@
-import { Github, Twitter, Linkedin, Heart } from "lucide-react";
+import { Github, Linkedin, Heart, Code } from "lucide-react";
 import "./Footer.css";
 
 function Footer() {
@@ -33,18 +33,27 @@ function Footer() {
         </div>
 
         <div className="footer-bottom">
-          <p>
-            Made with <Heart size={14} className="heart" /> ©{" "}
-            {new Date().getFullYear()} ResumeAI
+          <p className="made-by">
+            <Code size={14} className="code-icon" /> Crafted with{" "}
+            <Heart size={14} className="heart" /> by{" "}
+            <span className="author-name">Pritam Patra</span> ©{" "}
+            {new Date().getFullYear()}
           </p>
           <div className="social-links">
-            <a href="#" aria-label="GitHub">
+            <a
+              href="https://github.com/patrapritam"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="GitHub"
+            >
               <Github size={20} />
             </a>
-            <a href="#" aria-label="Twitter">
-              <Twitter size={20} />
-            </a>
-            <a href="#" aria-label="LinkedIn">
+            <a
+              href="https://www.linkedin.com/in/pritam-patra-22a806251/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+            >
               <Linkedin size={20} />
             </a>
           </div>

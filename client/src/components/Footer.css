@@ -71,6 +71,27 @@
   animation: pulse 1.5s infinite;
 }
 
+.footer-bottom .code-icon {
+  color: var(--primary-400);
+}
+
+.footer-bottom .author-name {
+  font-weight: 600;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  transition: all var(--transition-fast);
+}
+
+.footer-bottom .made-by {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  color: var(--gray-500);
+  font-size: 0.875rem;
+}
+
 .social-links {
   display: flex;
   gap: var(--space-md);
