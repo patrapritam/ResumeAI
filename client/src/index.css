@@ -99,7 +99,7 @@ html {
 body {
   font-family: var(--font-sans);
   background: var(--gradient-dark);
-  color: var(--gray-100);
+  color: var(--text-primary);
   min-height: 100vh;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
@@ -121,7 +121,7 @@ h5,
 h6 {
   font-weight: 700;
   line-height: 1.2;
-  color: white;
+  color: var(--text-heading);
 }
 
 h1 {
@@ -144,7 +144,7 @@ h6 {
 }
 
 p {
-  color: var(--gray-300);
+  color: var(--text-secondary);
 }
 
 a {
@@ -249,10 +249,10 @@ a:hover {
 .form-input {
   width: 100%;
   padding: var(--space-md);
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--input-bg);
   border: 1px solid var(--glass-border);
   border-radius: var(--radius-lg);
-  color: white;
+  color: var(--input-text);
   font-size: 1rem;
   transition: all var(--transition-base);
 }
@@ -264,7 +264,7 @@ a:hover {
 }
 
 .form-input::placeholder {
-  color: var(--gray-500);
+  color: var(--input-placeholder);
 }
 
 .form-textarea {
@@ -479,11 +479,11 @@ a:hover {
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--scrollbar-track);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.2);
+  background: var(--scrollbar-thumb);
   border-radius: var(--radius-full);
 }
 

@@ -2,10 +2,10 @@
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(26, 26, 46, 0.8);
+  background: var(--header-bg);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid var(--header-border);
 }
 
 .header .header-content {
@@ -36,7 +36,7 @@
 .header .logo-text {
   font-size: 1.25rem;
   font-weight: 700;
-  color: white;
+  color: var(--text-heading);
 }
 
 .header .nav-desktop {
@@ -49,7 +49,7 @@
   display: flex;
   align-items: center;
   gap: var(--space-xs);
-  color: var(--gray-300);
+  color: var(--nav-text);
   font-size: 0.875rem;
   font-weight: 500;
   text-decoration: none;
@@ -59,8 +59,13 @@
 }
 
 .header .nav-link:hover {
-  color: white;
-  background: rgba(255, 255, 255, 0.1);
+  color: var(--nav-text-hover);
+  background: var(--nav-hover-bg);
+}
+
+.header .nav-link.active {
+  color: var(--primary-400);
+  background: rgba(99, 102, 241, 0.1);
 }
 
 .header .user-menu {
@@ -73,7 +78,7 @@
   display: flex;
   align-items: center;
   gap: var(--space-xs);
-  color: var(--gray-300);
+  color: var(--nav-text);
   background: none;
   border: none;
   font-size: 0.875rem;
@@ -84,7 +89,7 @@
   display: none;
   background: none;
   border: none;
-  color: white;
+  color: var(--text-heading);
   cursor: pointer;
   padding: var(--space-sm);
 }
@@ -94,7 +99,7 @@
   flex-direction: column;
   gap: var(--space-sm);
   padding: var(--space-md) 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid var(--header-border);
 }
 
 /* Dropdown */
@@ -108,7 +113,7 @@
   gap: 6px;
   background: none;
   border: none;
-  color: var(--gray-300);
+  color: var(--nav-text);
   font-size: 0.875rem;
   font-weight: 500;
   padding: var(--space-sm) var(--space-md);
@@ -118,8 +123,8 @@
 }
 
 .header .dropdown-trigger:hover {
-  color: white;
-  background: rgba(255, 255, 255, 0.1);
+  color: var(--nav-text-hover);
+  background: var(--nav-hover-bg);
 }
 
 .header .dropdown-trigger svg.rotate {
@@ -136,12 +141,12 @@
   left: 0;
   margin-top: 8px;
   min-width: 180px;
-  background: rgba(26, 26, 46, 0.95);
+  background: var(--dropdown-bg);
   backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--header-border);
   border-radius: var(--radius-lg);
   padding: 8px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
   animation: dropdownFade 0.2s ease;
 }
 
@@ -161,7 +166,7 @@
   align-items: center;
   gap: 10px;
   padding: 10px 14px;
-  color: var(--gray-300);
+  color: var(--nav-text);
   text-decoration: none;
   border-radius: var(--radius-md);
   font-size: 0.875rem;
@@ -169,8 +174,8 @@
 }
 
 .header .dropdown-item:hover {
-  color: white;
-  background: rgba(139, 92, 246, 0.2);
+  color: var(--nav-text-hover);
+  background: var(--dropdown-hover);
 }
 
 .header .dropdown-item svg {
@@ -183,8 +188,8 @@
   justify-content: center;
   width: 36px;
   height: 36px;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: var(--nav-hover-bg);
+  border: 1px solid var(--header-border);
   border-radius: var(--radius-md);
   cursor: pointer;
   color: var(--text-secondary);
@@ -192,7 +197,7 @@
 }
 
 .header .theme-toggle:hover {
-  background: rgba(255, 255, 255, 0.15);
+  background: var(--dropdown-hover);
   color: var(--text-primary);
 }
 

@@ -1,6 +1,6 @@
 .footer {
-  background: rgba(15, 15, 30, 0.8);
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  background: var(--header-bg);
+  border-top: 1px solid var(--header-border);
   padding: var(--space-3xl) 0 var(--space-lg);
 }
 
@@ -34,7 +34,7 @@
 .footer-section h4 {
   font-size: 0.875rem;
   font-weight: 600;
-  color: white;
+  color: var(--text-heading);
   margin-bottom: var(--space-md);
 }
 
@@ -55,7 +55,7 @@
   justify-content: space-between;
   align-items: center;
   padding-top: var(--space-lg);
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid var(--header-border);
 }
 
 .footer-bottom p {
