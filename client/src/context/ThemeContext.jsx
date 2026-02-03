@@ -2,15 +2,8 @@ import { createContext, useContext, useState, useEffect } from "react";
 
 const ThemeContext = createContext();
 
-export function useTheme() {
-  const context = useContext(ThemeContext);
-  if (!context) {
-    throw new Error("useTheme must be used within a ThemeProvider");
-  }
-  return context;
-}
-
-export function ThemeProvider({ children }) {
+// Theme Provider Component
+function ThemeProvider({ children }) {
   const [theme, setTheme] = useState(() => {
     const saved = localStorage.getItem("theme");
     return saved || "dark";
@@ -155,4 +148,13 @@ export function ThemeProvider({ children }) {
   );
 }
 
-export default ThemeContext;
+// Custom hook to use theme
+const useTheme = () => {
+  const context = useContext(ThemeContext);
+  if (!context) {
+    throw new Error("useTheme must be used within a ThemeProvider");
+  }
+  return context;
+};
+
+export { ThemeProvider, useTheme };
