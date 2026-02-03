@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect } from "react";
 
 const ThemeContext = createContext();
 
@@ -149,12 +149,5 @@ function ThemeProvider({ children }) {
 }
 
 // Custom hook to use theme
-const useTheme = () => {
-  const context = useContext(ThemeContext);
-  if (!context) {
-    throw new Error("useTheme must be used within a ThemeProvider");
-  }
-  return context;
-};
-
-export { ThemeProvider, useTheme };
+export { ThemeProvider };
+export default ThemeContext;

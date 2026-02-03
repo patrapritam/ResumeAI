@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useContext, useState, useRef, useEffect } from "react";
 import { AuthContext } from "../context/AuthContext";
-import { useTheme } from "../context/ThemeContext";
+import { useTheme } from "../context/useTheme";
 import {
   FileText,
   LayoutDashboard,
