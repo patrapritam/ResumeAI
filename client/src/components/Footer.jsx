@@ -16,7 +16,7 @@ function Footer() {
       <div className="container">
         <div className="footer-content">
           <div className="footer-brand">
-            <h3>ResumeAI</h3>
+            <h3>TalentLens</h3>
             <p>AI-powered resume analysis for the modern job seeker.</p>
             <div className="contact-info">
               <a

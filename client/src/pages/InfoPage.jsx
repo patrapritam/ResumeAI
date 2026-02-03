@@ -125,7 +125,7 @@ const pageData = {
     ],
   },
   about: {
-    title: "About ResumeAI",
+    title: "About TalentLens",
     subtitle: "Empowering job seekers with AI",
     icon: Users,
     sections: [
@@ -239,7 +239,7 @@ const pageData = {
         icon: CheckCircle,
         title: "Acceptance of Terms",
         description:
-          "By accessing ResumeAI, you agree to be bound by these Terms of Service and our Privacy Policy.",
+          "By accessing TalentLens, you agree to be bound by these Terms of Service and our Privacy Policy.",
       },
       {
         icon: Shield,
@@ -257,7 +257,7 @@ const pageData = {
         icon: CheckCircle,
         title: "Intellectual Property",
         description:
-          "All content on ResumeAI, including logos, text, and software, is owned by us and protected by copyright laws.",
+          "All content on TalentLens, including logos, text, and software, is owned by us and protected by copyright laws.",
       },
     ],
   },

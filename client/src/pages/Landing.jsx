@@ -98,28 +98,40 @@ function Landing() {
             </div>
           </div>
           <div className="hero-visual">
-            <div className="hero-card glass-card">
-              <div className="score-display">
-                <div className="score-circle">
-                  <svg viewBox="0 0 100 100">
-                    <circle className="score-bg" cx="50" cy="50" r="45" />
-                    <circle
-                      className="score-fill"
-                      cx="50"
-                      cy="50"
-                      r="45"
-                      strokeDasharray="283"
-                      strokeDashoffset="56.6"
-                    />
-                  </svg>
-                  <div className="score-value">
-                    <span className="score-number">85</span>
-                    <span className="score-percent">%</span>
-                  </div>
+            <div className="hero-card glass-card lens-showcase">
+              {/* Animated Lens Core */}
+              <div className="lens-core">
+                <div className="lens-ring ring-1"></div>
+                <div className="lens-ring ring-2"></div>
+                <div className="lens-ring ring-3"></div>
+                <div className="lens-center">
+                  <Sparkles size={32} className="lens-icon" />
                 </div>
-                <h3>Match Score</h3>
-                <p>Based on 24 skills matched</p>
               </div>
+
+              {/* Floating Skill Cards */}
+              <div className="floating-cards">
+                <div className="floating-card card-1 glass-card">
+                  <CheckCircle size={16} className="check-icon" />
+                  <span>Skills Detected</span>
+                  <strong>24</strong>
+                </div>
+                <div className="floating-card card-2 glass-card">
+                  <Target size={16} className="target-icon" />
+                  <span>Match Rate</span>
+                  <strong className="text-gradient">High</strong>
+                </div>
+                <div className="floating-card card-3 glass-card">
+                  <TrendingUp size={16} className="trend-icon" />
+                  <span>ATS Score</span>
+                  <strong>92%</strong>
+                </div>
+              </div>
+
+              {/* Scanning Animation */}
+              <div className="scan-line"></div>
+
+              {/* Skill Tags */}
               <div className="skills-preview">
                 <div className="skill-tag matched">React</div>
                 <div className="skill-tag matched">TypeScript</div>

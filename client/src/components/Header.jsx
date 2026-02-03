@@ -56,7 +56,7 @@ function Header() {
               <FileText size={24} />
             </div>
             <div className="logo-content">
-              <span className="logo-text">ResumeAI</span>
+              <span className="logo-text">TalentLens</span>
               <span className="logo-byline">by Pritam Patra</span>
             </div>
           </Link>

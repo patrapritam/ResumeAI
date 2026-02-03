@@ -92,87 +92,175 @@
   margin: 0 auto;
 }
 
-.score-display {
-  text-align: center;
-  margin-bottom: var(--space-lg);
+/* Lens Showcase - New Hero Visual */
+.lens-showcase {
+  position: relative;
+  padding: var(--space-2xl);
+  min-height: 350px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-.score-circle {
+/* Animated Lens Core */
+.lens-core {
   position: relative;
   width: 160px;
   height: 160px;
-  margin: 0 auto var(--space-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--space-lg);
 }
 
-.score-circle svg {
+.lens-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 2px solid transparent;
+}
+
+.lens-ring.ring-1 {
   width: 100%;
   height: 100%;
-  transform: rotate(-90deg);
+  border-color: rgba(99, 102, 241, 0.3);
+  animation: pulse-ring 3s ease-in-out infinite;
 }
 
-.score-circle circle {
-  fill: none;
-  stroke-width: 8;
-  stroke-linecap: round;
+.lens-ring.ring-2 {
+  width: 75%;
+  height: 75%;
+  border-color: rgba(139, 92, 246, 0.4);
+  border-style: dashed;
+  animation: rotate-ring 10s linear infinite;
 }
 
-.score-bg {
-  stroke: rgba(255, 255, 255, 0.1);
+.lens-ring.ring-3 {
+  width: 50%;
+  height: 50%;
+  border-color: rgba(99, 102, 241, 0.6);
+  animation: pulse-ring 2s ease-in-out infinite reverse;
 }
 
-.score-fill {
-  stroke: url(#gradient);
-  stroke: var(--primary-500);
-  animation: scoreAnimation 1.5s ease-out forwards;
-  stroke-dasharray: 283;
-  stroke-dashoffset: 283;
-}
-
-@keyframes scoreAnimation {
-  to {
-    stroke-dashoffset: 42.45;
-  }
-}
-
-.score-value {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  display: flex;
-  align-items: baseline;
-}
-
-.score-number {
-  font-size: 3rem;
-  font-weight: 800;
+.lens-center {
+  width: 60px;
+  height: 60px;
   background: var(--gradient-primary);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 30px rgba(99, 102, 241, 0.5);
+  animation: glow-pulse 2s ease-in-out infinite;
 }
 
-.score-percent {
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: var(--primary-400);
+.lens-icon {
+  color: white;
+  animation: sparkle 1.5s ease-in-out infinite;
 }
 
-.score-display h3 {
-  font-size: 1.25rem;
-  margin-bottom: var(--space-xs);
+@keyframes pulse-ring {
+  0%, 100% { transform: scale(1); opacity: 0.5; }
+  50% { transform: scale(1.05); opacity: 1; }
 }
 
-.score-display p {
-  font-size: 0.875rem;
-  color: var(--gray-400);
+@keyframes rotate-ring {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 30px rgba(99, 102, 241, 0.5); }
+  50% { box-shadow: 0 0 50px rgba(99, 102, 241, 0.8), 0 0 80px rgba(139, 92, 246, 0.4); }
+}
+
+@keyframes sparkle {
+  0%, 100% { transform: scale(1) rotate(0deg); }
+  50% { transform: scale(1.1) rotate(15deg); }
+}
+
+/* Floating Cards */
+.floating-cards {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+}
+
+.floating-card {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: var(--space-sm) var(--space-md);
+  font-size: 0.75rem;
+  white-space: nowrap;
+  animation: float-card 4s ease-in-out infinite;
+}
+
+.floating-card span {
+  color: var(--text-secondary);
+}
+
+.floating-card strong {
+  color: var(--text-heading);
+  font-weight: 700;
+}
+
+.floating-card.card-1 {
+  top: 10%;
+  left: -10%;
+  animation-delay: 0s;
+}
+
+.floating-card.card-2 {
+  top: 25%;
+  right: -15%;
+  animation-delay: 1s;
+}
+
+.floating-card.card-3 {
+  bottom: 30%;
+  right: -10%;
+  animation-delay: 2s;
+}
+
+.floating-card .check-icon { color: var(--accent-green); }
+.floating-card .target-icon { color: var(--accent-purple); }
+.floating-card .trend-icon { color: var(--accent-blue); }
+
+@keyframes float-card {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Scan Line */
+.scan-line {
+  position: absolute;
+  left: 10%;
+  right: 10%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--primary-400), transparent);
+  animation: scan 3s linear infinite;
+  opacity: 0.6;
+}
+
+@keyframes scan {
+  0% { top: 10%; opacity: 0; }
+  10% { opacity: 0.6; }
+  90% { opacity: 0.6; }
+  100% { top: 90%; opacity: 0; }
+}
+
+/* Skills Preview */
 .skills-preview {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-sm);
   justify-content: center;
+  margin-top: var(--space-md);
 }
 
 .skill-tag {
