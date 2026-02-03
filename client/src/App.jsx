@@ -6,6 +6,7 @@ import { ToastProvider } from "./context/ToastContext";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import FAB from "./components/FAB";
+import SplashScreen from "./components/SplashScreen";
 import Landing from "./pages/Landing";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
@@ -22,6 +23,17 @@ import InfoPage from "./pages/InfoPage";
 import { api } from "./services/api";
 
 function App() {
+  // Show splash screen only on first visit per session
+  const [showSplash, setShowSplash] = useState(() => {
+    const hasSeenSplash = sessionStorage.getItem("hasSeenSplash");
+    return !hasSeenSplash;
+  });
+
+  const handleSplashComplete = () => {
+    setShowSplash(false);
+    sessionStorage.setItem("hasSeenSplash", "true");
+  };
+
   const [user, setUser] = useState(() => {
     const savedUser = localStorage.getItem("user");
     const token = localStorage.getItem("token");
@@ -57,6 +69,9 @@ function App() {
     <ThemeProvider>
       <ToastProvider>
         <AuthContext.Provider value={{ user, login, logout }}>
+          {/* Splash Screen */}
+          {showSplash && <SplashScreen onComplete={handleSplashComplete} />}
+
           <div className="app">
             <Header />
             <main>
