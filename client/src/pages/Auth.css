@@ -143,11 +143,39 @@
 }
 
 @media (max-width: 480px) {
+  .auth-container {
+    padding: 0 var(--space-sm);
+  }
+
   .auth-card {
     padding: var(--space-lg);
   }
   
   .auth-header h1 {
     font-size: 1.5rem;
+  }
+
+  .auth-icon {
+    width: 48px;
+    height: 48px;
+  }
+
+  .input-wrapper .form-input {
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+}
+
+@media (max-width: 320px) {
+  .auth-card {
+    padding: var(--space-md);
+  }
+
+  .auth-header h1 {
+    font-size: 1.25rem;
+  }
+
+  .auth-icon {
+    width: 40px;
+    height: 40px;
   }
 }

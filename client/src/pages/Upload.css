@@ -479,6 +479,20 @@
 }
 
 @media (max-width: 768px) {
+  .upload-section,
+  .job-section {
+    padding: var(--space-md);
+  }
+
+  .dropzone {
+    padding: var(--space-xl);
+  }
+
+  .dropzone-icon {
+    width: 60px;
+    height: 60px;
+  }
+
   .progress-steps .step span {
     display: none;
   }
@@ -511,5 +525,105 @@
   
   .results-actions .btn {
     width: 100%;
+  }
+
+  .score-circle.large {
+    width: 160px;
+    height: 160px;
+  }
+
+  .score-number {
+    font-size: 3rem;
+  }
+
+  .score-percent {
+    font-size: 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .upload-page,
+  .upload-header {
+    padding: 0 var(--space-xs);
+  }
+
+  .upload-header h1 {
+    font-size: 1.25rem;
+  }
+
+  .upload-section,
+  .job-section {
+    padding: var(--space-sm);
+    margin: 0;
+    max-width: 100%;
+  }
+
+  .dropzone {
+    padding: var(--space-lg);
+  }
+
+  .dropzone-icon {
+    width: 50px;
+    height: 50px;
+  }
+
+  .dropzone h3 {
+    font-size: 1rem;
+  }
+
+  .step-number {
+    width: 28px;
+    height: 28px;
+    font-size: 0.75rem;
+  }
+
+  .step-line {
+    max-width: 40px;
+    margin: 0 var(--space-xs);
+  }
+
+  .score-circle.large {
+    width: 120px;
+    height: 120px;
+  }
+
+  .score-number {
+    font-size: 2.25rem;
+  }
+
+  .score-card {
+    padding: var(--space-md);
+  }
+
+  .skill-tags {
+    gap: var(--space-xs);
+  }
+
+  .skill-tag {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.5rem;
+  }
+
+  .recommendations-section,
+  .improvements-section {
+    padding: var(--space-md);
+  }
+
+  .recommendation-item {
+    padding: var(--space-sm);
+  }
+}
+
+@media (max-width: 320px) {
+  .dropzone h3 {
+    font-size: 0.9rem;
+  }
+
+  .file-types {
+    font-size: 0.65rem;
+  }
+
+  .score-number {
+    font-size: 1.75rem;
   }
 }
