@@ -181,8 +181,45 @@ function Header() {
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   <Upload size={18} />
-                  Upload Resume
+                  Analyze Resume
                 </Link>
+                <Link
+                  to="/jobs"
+                  className="nav-link"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  <FolderOpen size={18} />
+                  Job Library
+                </Link>
+                <Link
+                  to="/resume-builder"
+                  className="nav-link"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  <FileEdit size={18} />
+                  Resume Builder
+                </Link>
+
+                <div className="mobile-divider"></div>
+                <span className="mobile-section-label">Tools</span>
+
+                <Link
+                  to="/ats-check"
+                  className="nav-link"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  <Shield size={18} />
+                  ATS Check
+                </Link>
+                <Link
+                  to="/cover-letter"
+                  className="nav-link"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  <Sparkles size={18} />
+                  Cover Letter
+                </Link>
+
                 {user.role === "admin" && (
                   <Link
                     to="/admin"
@@ -193,10 +230,25 @@ function Header() {
                     Analytics
                   </Link>
                 )}
+
+                <div className="mobile-divider"></div>
+
                 <button
-                  onClick={handleLogout}
-                  className="btn btn-secondary"
-                  style={{ width: "100%" }}
+                  className="nav-link mobile-theme-btn"
+                  onClick={() => {
+                    toggleTheme();
+                  }}
+                >
+                  {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
+                  {theme === "dark" ? "Light Mode" : "Dark Mode"}
+                </button>
+
+                <button
+                  onClick={() => {
+                    handleLogout();
+                    setMobileMenuOpen(false);
+                  }}
+                  className="btn btn-secondary mobile-logout-btn"
                 >
                   <LogOut size={16} />
                   Logout
@@ -215,6 +267,7 @@ function Header() {
                   to="/register"
                   className="btn btn-primary"
                   onClick={() => setMobileMenuOpen(false)}
+                  style={{ textAlign: "center" }}
                 >
                   Get Started
                 </Link>
