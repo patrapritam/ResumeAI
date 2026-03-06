@@ -1,6 +1,6 @@
 /**
  * AI Resume Analyzer - Node.js Backend
- * Vercel Build Trigger: v2.0.4 - Fixed middleware order
+ * v2.0.5 - Render deployment support
  * Express server with MongoDB and NLP service integration
  */
 
